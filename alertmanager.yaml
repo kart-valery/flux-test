@@ -7,14 +7,13 @@ metadata:
   namespace: monitoring
 data:
   config.yml: |-
-    global:
+    global: {}
     templates:
-    - '/etc/alertmanager/*.tmpl'
     route:
       receiver: slack_demo
       group_by: ['alertname', 'priority']
       group_wait: 10s
-      repeat_interval: 5m 
+      repeat_interval: 1m 
     receivers:
     - name: slack_demo
       slack_configs:
@@ -88,8 +87,6 @@ spec:
         volumeMounts:
         - name: config-volume
           mountPath: /etc/alertmanager
-        - name: templates-volume
-          mountPath: /etc/alertmanager-templates
         - name: alertmanager
           mountPath: /alertmanager
       volumes:
