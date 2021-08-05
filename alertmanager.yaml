@@ -17,7 +17,7 @@ data:
     receivers:
     - name: slack_demo
       slack_configs:
-      - api_url: https://hooks.slack.com/services/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
+      - api_url: https://hooks.slack.com/services/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
         channel: '#alerts_2'
         title: "CPU AVERAGE"
 ---
