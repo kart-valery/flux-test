@@ -17,8 +17,9 @@ data:
     receivers:
     - name: slack_demo
       slack_configs:
-      - api_url: https://hooks.slack.com/services/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
-        channel: '#ansible_notification'
+      - api_url: https://hooks.slack.com/services/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
+        channel: '#general'
+        title: "CPU AVERAGE"
 ---
 apiVersion: v1
 kind: ConfigMap
