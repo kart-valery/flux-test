@@ -1,5 +1,4 @@
 ---
-#https://github.com/bibinwilson/kubernetes-alert-manager/
 kind: ConfigMap
 apiVersion: v1
 metadata:
@@ -11,16 +10,15 @@ data:
     templates:
     - '/etc/alertmanager/*.tmpl'
     route:
-      receiver: slack
-      group_by: ['alertname']
+      receiver: slack_demo
+      group_by: ['alertname', 'priority']
       group_wait: 10s
       repeat_interval: 1m 
     receivers:
-    - name: slack
+    - name: slack_demo
       slack_configs:
       - api_url: https://hooks.slack.com/services/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
         channel: '#alerts_2'
-        username: 'alertmanager'
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -79,16 +77,11 @@ spec:
         ports:
         - name: alertmanager
           containerPort: 9093
-        resources:
-            requests:
-              cpu: 500m
-              memory: 500M
-            limits:
-              cpu: 1
-              memory: 1Gi
         volumeMounts:
         - name: config-volume
           mountPath: /etc/alertmanager
+        - name: templates-volume
+          mountPath: /etc/alertmanager-templates
         - name: alertmanager
           mountPath: /alertmanager
       volumes:
