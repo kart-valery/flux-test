@@ -17,8 +17,8 @@ data:
     receivers:
     - name: slack_demo
       slack_configs:
-      - api_url: https://hooks.slack.com/services/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
-        channel: '#alerts_2'
+      - api_url: https://hooks.slack.com/services/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
+        channel: '#ansible_notification'
 ---
 apiVersion: v1
 kind: ConfigMap
